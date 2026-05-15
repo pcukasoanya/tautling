@@ -1,2 +1,10 @@
-runConfig:
+scripts:
   runCommand: node dist-server/server.js
+
+outputFiles:
+  serverApp:
+    include:
+      - dist
+      - dist-server
+      - package.json
+      - package-lock.json
