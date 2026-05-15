@@ -1,0 +1,88 @@
+. The "Service Procedure" Logic (Section 02)
+We will rewrite this to show a simple 4-step path. No "Protocols," just a clear plan.
+
+Step 01: Home Visit & Planning
+
+We come to your house to look at your current floors.
+
+We handle three things: 1. Showing you different vinyl floor types. 2. Taking exact measurements of your rooms. 3. Helping you choose the best design for your home.
+
+Step 02: Price Quote
+
+We give you a clear price that covers the cost of the vinyl flooring and the cost of our labor. No hidden fees.
+
+Step 03: Getting Materials
+
+We can pick up and deliver the flooring for you, or you can buy the materials yourself—it’s up to you.
+
+Step 04: The Installation
+
+The final step. We lay your new floor perfectly, clean up the mess, and make sure you're happy with the result.
+
+2. The "Our Standards" Section (Section 03)
+This replaces the old technical specs with simple promises:
+
+Cleanliness: We treat your home like our own and leave it spotless.
+
+Strong Floors: We make sure every plank is locked tight so it stays flat and solid.
+
+On-Time: We show up when we say we will and finish the job fast.
+
+Honesty: We tell you the price upfront and stick to it.
+
+3. Footer & Contact Updates
+We are stripping the "Corporate" clutter. The footer will now be clean and functional, and the Contact section will have all your direct info.
+
+Contact Details to include:
+
+Address: 121 Minges Circle, Battle Creek, MI 49015
+
+Email: tuantling899@gmail.com
+
+Phone: +1 (269) 446-0547
+
+4. The Claude Refactor Prompt
+Use this prompt to have Claude rewrite the code for the PerformanceLab (now ServiceProcedure) and the Footer.
+
+Prompt: "Act as a Lead Developer. Refactor the PerformanceLab.tsx and Footer.tsx components for Tuan Tling Vinyl Flooring.
+
+The Goal: Simplify the language and the process. The tone should be human, local, and easy to understand for everyone.
+
+Changes for ServiceProcedure (Section 02):
+
+Change name from 'Performance Lab' to 'Service Procedure'.
+
+Implement a 4-Step process:
+
+Step 1: Home Visit & Planning. Mention picking floor types, taking measurements, and choosing the design.
+
+Step 2: Price Quote. Mention costs for both flooring materials and labor.
+
+Step 3: Getting Materials. Clearly state this is optional; the client can buy them or the company can source them.
+
+Step 4: Installation. The final work and cleanup.
+
+Changes for Our Standards (Section 03):
+
+Use simple headers like 'Neat & Tidy', 'Solid Work', 'Always On Time', and 'Fair Prices'.
+
+Changes for Footer:
+
+REMOVE: Navigation links, technical specifications list (Wear layer, etc.), and the Local Status/Weather widgets.
+
+ADD: The full company contact info: 121 Minges Circle, Battle Creek, MI 49015 | tuantling899@gmail.com | +1 (269) 446-0547.
+
+Keep the layout very clean and minimal using the Satoshi font.
+
+General Content Rule: Change 'The Mastery' to 'Our Works'. Remove all city names/locations from the gallery images. In the modals, explain the floor type (e.g., 'Oak Vinyl') and why it's a good choice in very simple English.
+
+[PASTE YOUR PERFORMANCE LAB AND FOOTER CODE HERE]"
+
+5. Final Copy Check for "Our Works" (Gallery)
+When you update the Gallery cards, use these simple descriptions:
+
+Classic Wood Look: "This floor looks just like real wood but it is 100% waterproof. It is very hard to scratch and stays beautiful for years."
+
+Grey Slate Style: "A tough, stone-look floor that stays warm under your feet. Perfect for bathrooms or laundry rooms because it handles water easily."
+
+Warm Walnut Finish: "A darker, cozy wood style that makes any room feel high-end. It is thick and quiet to walk on."
