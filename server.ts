@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { Resend } from 'resend';
 import crypto from 'crypto';
+import path from 'path';
 
 const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -58,6 +59,7 @@ const validateCsrfToken = (token: string): boolean => {
 app.use(cors());
 app.use(express.json());
 
+// API Routes
 app.get('/api/csrf-token', (req: Request, res: Response) => {
   const token = generateCsrfToken();
   res.json({ token });
@@ -116,7 +118,18 @@ app.post('/api/contact', async (req: Request, res: Response) => {
   }
 });
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Serve static files from the React app
+const distPath = path.join(__dirname, 'dist');
+app.use(express.static(distPath));
+
+// For any request that doesn't match an API route, send back the React index.html
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+const PORT = Number(process.env.PORT) || 3001;
+const HOST = '0.0.0.0'; // Essential for Cloud Run / Docker
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server running at http://${HOST}:${PORT}`);
 });
