@@ -1,9 +1,11 @@
+
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { Resend } from 'resend';
 import crypto from 'crypto';
 import path from 'path';
+import fs from 'fs';
 
 const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -120,16 +122,27 @@ app.post('/api/contact', async (req: Request, res: Response) => {
 
 // Serve static files from the React app
 const distPath = path.join(__dirname, 'dist');
-app.use(express.static(distPath));
 
-// For any request that doesn't match an API route, send back the React index.html
-app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(distPath, 'index.html'));
-});
+// Use static files if they exist
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (req: Request, res: Response) => {
+    const indexPath = path.join(distPath, 'index.html');
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send('Static files not found. Please run build.');
+    }
+  });
+} else {
+  app.get('*', (req, res) => {
+    res.status(404).send('Application not built. Please run "npm run build".');
+  });
+}
 
-const PORT = Number(process.env.PORT) || 3001;
-const HOST = '0.0.0.0'; // Essential for Cloud Run / Docker
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
+const HOST = '0.0.0.0';
 
 app.listen(PORT, HOST, () => {
-  console.log(`Server running at http://${HOST}:${PORT}`);
+  console.log(`Server listening on ${HOST}:${PORT}`);
 });
